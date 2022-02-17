@@ -19,15 +19,10 @@ calcBtn.addEventListener('click', function (event) {
     let availableExpenses = parseFloat(expenses.innerText);
     let inputAmount = parseFloat(foodInput.value) + parseFloat(rentInput.value) + parseFloat(clothInput.value);
     if (isNaN(inputAmount) || inputAmount < 0) {
-        foodInput.value = '';
-        rentInput.value = '';
-        clothInput.value = '';
         return alert('Please give a valid amount of money in input field');
     }
     expenses.innerText = inputAmount + availableExpenses;
-    foodInput.value = '';
-    rentInput.value = '';
-    clothInput.value = '';
+
 
     // Income and balance
     let incomeField = document.getElementById('income-input');
@@ -38,7 +33,23 @@ calcBtn.addEventListener('click', function (event) {
     }
     balance.innerText = balanceAmount + availableBalance;
     balance.innerText = parseFloat(incomeField.value) - expenses.innerText;
-    incomeField.value = '';
+
+})
+
+// Save part
+const saveInput = document.getElementById('save-input');
+const savingAmount = document.getElementById('saving-amount');
+const remainingBalance = document.getElementById('remaining-balance');
+document.getElementById('save-btn').addEventListener('click', function () {
+    let incomeField = document.getElementById('income-input');
+    let saveInput = document.getElementById('save-input');
+    let incomeIntoPer = parseInt(incomeField.value) / 100;
+    let savingIntoPer = parseInt(saveInput.value);
+    let saveAmount = parseInt(savingAmount.innerText);
+    savingAmount.innerText = incomeIntoPer * savingIntoPer;
+
+    remainingBalance.innerText = parseFloat(balance.innerText) - parseFloat(savingAmount.innerText);
+
 })
 
 
@@ -123,18 +134,3 @@ calcBtn.addEventListener('click', function (event) {
 
 
 
-// // })
-
-// document.getElementById('save-btn').addEventListener('click', function () {
-//     const saveInput = document.getElementById('save-input').value;
-//     const savingAmount = document.getElementById('saving-amount').innerText;
-//     const remainingBalance = document.getElementById('remaining-balance').innerText;
-//     const incomeField = document.getElementById('income-input').value;
-
-//     function percentage(num, per) {
-//         return (num / 100) * per;
-//     }
-
-//     const per = percentage(incomeField, saveInput);
-//     savingAmount.innerText = per;
-// })
