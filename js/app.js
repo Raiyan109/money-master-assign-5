@@ -12,6 +12,7 @@ const incomeField = document.getElementById('income-input');
 
 calcBtn.addEventListener('click', function (event) {
 
+    // Expenses 
     const foodInput = document.getElementById('food-input');
     const rentInput = document.getElementById('rent-input');
     const clothInput = document.getElementById('cloth-input');
@@ -28,6 +29,7 @@ calcBtn.addEventListener('click', function (event) {
     rentInput.value = '';
     clothInput.value = '';
 
+    // Income and balance
     let incomeField = document.getElementById('income-input');
     let availableBalance = parseFloat(balance.innerText);
     let balanceAmount = parseFloat(incomeField.value);
@@ -37,15 +39,6 @@ calcBtn.addEventListener('click', function (event) {
     balance.innerText = balanceAmount + availableBalance;
     balance.innerText = parseFloat(incomeField.value) - expenses.innerText;
     incomeField.value = '';
-
-    // const incomeField = document.getElementById('income-input').value;
-    // const balance = document.getElementById('total-balance').innerText = incomeField - inputAmount;
-    // if (isNaN(balance) || balance < 0) {
-    //     incomeField.value = '';
-
-    //     return alert('Please give a valid amount of money in input field');
-    // }
-    // incomeField.value = '';
 })
 
 
