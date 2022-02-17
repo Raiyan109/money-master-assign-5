@@ -30,12 +30,11 @@ calcBtn.addEventListener('click', function (event) {
 
     let incomeField = document.getElementById('income-input');
     let availableBalance = parseFloat(balance.innerText);
-    if (isNaN(availableBalance) || availableBalance < 0) {
-        incomeField.value = '';
-
-        return alert('Please give a valid amount of money in input field');
+    let balanceAmount = parseFloat(incomeField.value);
+    if (isNaN(balanceAmount) || balanceAmount < 0) {
+        return alert('Please input valid amount in Your income field')
     }
-    balance.innerText = parseFloat(incomeField.value) + availableBalance;
+    balance.innerText = balanceAmount + availableBalance;
     balance.innerText = parseFloat(incomeField.value) - expenses.innerText;
     incomeField.value = '';
 
